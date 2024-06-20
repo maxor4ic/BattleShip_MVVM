@@ -1,0 +1,311 @@
+﻿<Page x:Class="ButtleShip_MVVM.Views.Pages.GamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ButtleShip_MVVM.Views.Pages" 
+      xmlns:vm="clr-namespace:ButtleShip_MVVM.ViewModels" d:DataContext="{d:DesignInstance Type=vm:BattleShipVM}"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="850"
+      Title="GamePage"
+      d:Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="1" Text="{Binding Time}" d:Text="0:00" FontSize="36" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Margin="0 0 0 0"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0 0 0 90" VerticalAlignment="Bottom">
+            <Image Source="C:\Users\maxor\Desktop\BattleShip_MVVM\ButtleShip_MVVM\Models\icons8-битва-80.png" Width="80" Height="80"/>
+            <Image Source="C:\Users\maxor\Desktop\BattleShip_MVVM\ButtleShip_MVVM\Models\icons8-штурвал-80.png" Width="80" Height="80"/>
+            <Button Style="{StaticResource MapButtonStyle}" Content="Меню" Click="Btn_Click"
+                    Command="{Binding NavigateToMenuPage}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"/>
+            <Button Style="{StaticResource MapButtonStyle}" Content="Заново" Click="Btn_Click"
+                    Command="{Binding NavigateToMapPage}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Style="{StaticResource MenuLabelStyle}" Content="Ваше поле" />
+
+            <ItemsControl>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text=" " />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="А" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Б" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="В" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Г" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Д" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Е" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Ж" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="З" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="И" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="К" />
+                </Border>
+            </ItemsControl>
+
+            <StackPanel Orientation="Horizontal">
+                <ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="1" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="2" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="3" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="4" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="5" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="6" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="7" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="8" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="9" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="10" />
+                    </Border>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding OurMap.Map}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="#4682B4" BorderThickness="1.3" 
+                                                Background="Transparent"
+                                                Width="31" Height="31" Margin="0, 0, -1, -1">
+                                            <Grid>
+                                                <Rectangle Width="29" Height="29" Visibility="{Binding ShipVis}">
+                                                    <Rectangle.Fill>
+                                                        <SolidColorBrush Color="Silver" />
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+
+                                                <Ellipse Width="7" Height="7" Fill="#4682B4"
+                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                         Visibility="{Binding Miss}"/>
+
+                                                <Path Data="M4,4 L25,25 M25,4 L4,25" 
+                                                      Stroke="#8F00" StrokeThickness="3"
+                                                      Visibility="{Binding Shot}"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0 10 10 10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Количество выстрелов: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding OurMap.Steps}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Уничтожено кораблей: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding OurMap.Goals}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text=" из 10" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Точность попадания: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding OurMap.Accuracy}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text=" %" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Style="{StaticResource MenuLabelStyle}" Content="Поле противника" />
+
+            <ItemsControl>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text=" " />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="А" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Б" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="В" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Г" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Д" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Е" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="Ж" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="З" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="И" />
+                </Border>
+                <Border Style="{StaticResource GameBorderStyle}">
+                    <TextBlock Style="{StaticResource LettersNumbers}" Text="К" />
+                </Border>
+            </ItemsControl>
+
+            <StackPanel Orientation="Horizontal">
+                <ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="1" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="2" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="3" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="4" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="5" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="6" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="7" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="8" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="9" />
+                    </Border>
+                    <Border Style="{StaticResource GameBorderStyle}">
+                        <TextBlock Style="{StaticResource LettersNumbers}" Text="10" />
+                    </Border>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding EnemyMap.Map}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="#4682B4" BorderThickness="1.3" 
+                                                Background="Transparent"
+                                                Width="31" Height="31" Margin="0, 0, -1, -1"
+                                                MouseDown="Border_MouseDown" Cursor="{Binding Cursor}">
+                                            <Grid>
+                                                <Rectangle Width="29" Height="29" Visibility="{Binding ShipVis}">
+                                                    <Rectangle.Fill>
+                                                        <SolidColorBrush Color="Silver" />
+                                                    </Rectangle.Fill>
+                                                </Rectangle>
+
+                                                <Ellipse Width="7" Height="7" Fill="#4682B4"
+                                                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                         Visibility="{Binding Miss}"/>
+
+                                                <Path Data="M4,4 L25,25 M25,4 L4,25" 
+                                                      Stroke="#8F00" StrokeThickness="3"
+                                                      Visibility="{Binding Shot}"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0 10 10 10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Количество выстрелов: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding EnemyMap.Steps}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Уничтожено кораблей: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding EnemyMap.Goals}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text=" из 10" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Точность попадания: " FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text="{Binding EnemyMap.Accuracy}" d:Text="0" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBlock Text=" %" FontSize="20" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

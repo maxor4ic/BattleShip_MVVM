@@ -1,0 +1,23 @@
+﻿<Page x:Class="ButtleShip_MVVM.Views.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ButtleShip_MVVM.Views.Pages" 
+      xmlns:vm="clr-namespace:ButtleShip_MVVM.ViewModels" d:DataContext="{d:DesignInstance Type=vm:BattleShipVM}"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="850"
+      Title="MenuPage"
+      d:Background="White">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="10">
+            <Image Source="C:\Users\maxor\Desktop\BattleShip_MVVM\ButtleShip_MVVM\Models\battleship icon.png" Width="100" Height="100"/>
+            <Label Style="{StaticResource MenuLabelStyle}" Content="Морской Бой" />
+            <Button Style="{StaticResource MenuButtonStyle}" Content="Играть"
+                    Command="{Binding NavigateToMapPage}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"/>
+            <Button Style="{StaticResource MenuButtonStyle}" Content="Выход" Click="BtnExit_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+﻿<Window x:Class="ButtleShip_MVVM.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ButtleShip_MVVM.Views" 
+        xmlns:viewmodels="clr-namespace:ButtleShip_MVVM.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:BattleShipVM}"
+        mc:Ignorable="d"
+        Title="Морской Бой" Height="520" Width="850">
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\maxor\Desktop\BattleShip_MVVM\ButtleShip_MVVM\Models\myatyy-list-bumagi.png" />
+        </Grid.Background>
+        <Frame Source="../Pages/MenuPage.xaml" NavigationUIVisibility="Hidden" />
+    </Grid> 
+</Window>
