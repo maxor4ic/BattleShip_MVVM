@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace ButtleShip_MVVM.ViewModels
+﻿namespace ButtleShip_MVVM.ViewModels
 {
     public class MainMap : ViewModelBase
     {
@@ -33,7 +31,7 @@ namespace ButtleShip_MVVM.ViewModels
             Map = (ICell[][])new CreatorMap().FactoryMethod();
             Ships = (IShip[])new CreatorShips().FactoryMethod();
         }
-
+        
         public void FillMap()
         {
             IFillMap fillMap = new MainFillMap();
