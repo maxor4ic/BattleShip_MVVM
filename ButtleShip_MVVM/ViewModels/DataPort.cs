@@ -1,6 +1,4 @@
-﻿using ButtleShip_MVVM.Commands;
-
-namespace ButtleShip_MVVM.ViewModels
+﻿namespace ButtleShip_MVVM.ViewModels
 {
     public class DataPort
     {

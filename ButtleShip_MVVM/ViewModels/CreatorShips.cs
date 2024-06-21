@@ -1,6 +1,4 @@
-﻿using System.Windows.Shapes;
-
-namespace ButtleShip_MVVM.ViewModels
+﻿namespace ButtleShip_MVVM.ViewModels
 {
     public class CreatorShips : Creator
     {
