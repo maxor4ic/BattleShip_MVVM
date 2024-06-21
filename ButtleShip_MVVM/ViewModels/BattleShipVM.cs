@@ -54,25 +54,25 @@ namespace ButtleShip_MVVM.ViewModels
 
         public void CheckWin()
         {
-            MainCheckWin checkWin = new MainCheckWin();
+            ICheckWin checkWin = new MainCheckWin();
             checkWin.CheckWin();
         }
 
         public void Accuracy()
         {
-            MainAccuarcy accuracy = new MainAccuarcy();
+            IAccuarcy accuracy = new MainAccuarcy();
             accuracy.Accuracy();
         }
 
         public void Bot()
         {
-            MainBot bot = new MainBot();
+            Ibot bot = new MainBot();
             bot.Bot();
         }
 
         public void Shot(ICell cell, int select)
         {
-            MainShot shot = new MainShot();
+            IShot shot = new MainShot();
             shot.Shot(cell, select);
         }
     }
